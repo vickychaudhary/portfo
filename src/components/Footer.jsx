@@ -49,8 +49,9 @@ const Footer = () => {
                 <span className="brand-name gradient-text">Vikas</span>
               </div>
               <p className="brand-description">
-                Full Stack Developer & Blockchain Engineer passionate about
-                building the future of decentralized applications.
+                Full stack tinkerer keeping the spirit of dial-up alive. I ship
+                production-ready web apps, on-chain infra, and retro vibes in
+                equal measure.
               </p>
             </div>
           </div>
@@ -106,7 +107,7 @@ const Footer = () => {
               </p>
               <p className="contact-item">
                 <span className="availability-dot"></span>
-                Available for opportunities
+                Status: Online
               </p>
             </div>
           </div>
@@ -122,11 +123,7 @@ const Footer = () => {
           <div className="footer-divider"></div>
           <div className="footer-bottom-content">
             <p className="copyright">
-              © {currentYear} Vikas Chaudhary. All rights reserved.
-            </p>
-            <p className="made-with">
-              Made with <Heart size={16} className="heart-icon" /> using React &
-              Framer Motion
+              Copyright {currentYear} Vikas Chaudhary // best viewed in 1024x768.
             </p>
           </div>
         </motion.div>

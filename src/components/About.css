@@ -1,57 +1,52 @@
 .about {
-  padding: 6rem 2rem;
-  background: rgba(0, 0, 0, 0.2);
+  padding: 5rem 2.5rem;
   position: relative;
+  overflow: hidden;
 }
 
 .about::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(
-      circle at 30% 20%,
-      rgba(102, 126, 234, 0.05) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 70% 80%,
-      rgba(118, 75, 162, 0.05) 0%,
-      transparent 50%
-    );
+  inset: 0;
+  background: repeating-linear-gradient(135deg, rgba(0, 255, 234, 0.06) 0 14px, transparent 14px 28px),
+    repeating-linear-gradient(-135deg, rgba(255, 110, 199, 0.05) 0 18px, transparent 18px 36px);
+  opacity: 0.5;
   z-index: -1;
 }
 
 .about-container {
-  max-width: 1200px;
+  width: min(980px, 100%);
   margin: 0 auto;
 }
 
 .about-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 3.5rem;
 }
 
 .section-title {
-  font-size: 3rem;
-  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 2.6rem);
   margin-bottom: 1rem;
-  color: #ffffff;
+  color: var(--retro-dark);
+  text-shadow: 4px 4px 0 var(--retro-yellow), 6px 6px 0 rgba(0, 0, 0, 0.3);
 }
 
 .section-subtitle {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.85);
+  border: 3px dashed var(--retro-dark);
+  padding: 0.8rem 1.4rem;
+  color: #2c1463;
+  font-family: "VT323", monospace;
   font-size: 1.2rem;
-  color: #b0b0b0;
-  max-width: 600px;
-  margin: 0 auto;
+  letter-spacing: 1px;
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.2);
 }
 
 .about-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 3rem;
   align-items: start;
 }
 
@@ -64,50 +59,46 @@
 .text-content {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.2rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 234, 255, 0.88));
+  border: 4px double var(--retro-dark);
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.25);
+  padding: 2rem;
 }
 
 .about-description {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: #e0e0e0;
+  color: #1c0b49;
+  font-size: 1.15rem;
+  line-height: 1.8;
 }
 
 .about-stats {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.4rem;
 }
 
 .stat {
+  background: repeating-linear-gradient(135deg, rgba(255, 251, 125, 0.2) 0 12px, rgba(0, 255, 234, 0.12) 12px 24px);
+  border: 3px solid var(--retro-dark);
+  box-shadow: 6px 6px 0 var(--retro-dark);
+  padding: 1.3rem 1.1rem;
   text-align: center;
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  backdrop-filter: blur(20px);
-  transition: all 0.3s ease;
-}
-
-.stat:hover {
-  background: rgba(102, 126, 234, 0.1);
-  border-color: #667eea;
-  transform: translateY(-5px);
 }
 
 .stat-number {
   display: block;
-  font-size: 2rem;
-  font-weight: 700;
-  color: #667eea;
-  margin-bottom: 0.5rem;
+  font-family: "Press Start 2P", cursive;
+  font-size: 1.25rem;
+  color: var(--retro-dark);
+  margin-bottom: 0.6rem;
 }
 
 .stat-label {
-  font-size: 0.9rem;
-  color: #b0b0b0;
-  font-weight: 500;
+  font-size: 0.95rem;
+  color: #2c1463;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .about-highlights {
@@ -117,10 +108,10 @@
 }
 
 .highlights-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #ffffff;
-  margin-bottom: 1rem;
+  font-family: "Press Start 2P", cursive;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  color: var(--retro-dark);
 }
 
 .highlights-grid {
@@ -129,85 +120,94 @@
 }
 
 .highlight-card {
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  backdrop-filter: blur(20px);
-  transition: all 0.3s ease;
-  cursor: pointer;
+  padding: 1.6rem;
+  background: rgba(255, 255, 255, 0.92);
+  border: 4px double var(--retro-dark);
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.35);
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.highlight-card::after {
+  content: "★";
+  position: absolute;
+  top: -18px;
+  right: -14px;
+  font-size: 1.8rem;
+  color: var(--retro-yellow);
+  text-shadow: 3px 3px 0 var(--retro-dark);
 }
 
 .highlight-card:hover {
-  background: rgba(102, 126, 234, 0.1);
-  border-color: #667eea;
-  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+  transform: translate(-4px, -4px) rotate(-1deg);
+  box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.35);
 }
 
 .highlight-icon {
-  width: 50px;
-  height: 50px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 15px;
+  width: 60px;
+  height: 60px;
+  border: 3px solid var(--retro-dark);
+  background: linear-gradient(135deg, var(--retro-cyan), var(--retro-pink));
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--retro-dark);
   margin-bottom: 1rem;
+  box-shadow: 4px 4px 0 var(--retro-dark);
 }
 
 .highlight-title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #ffffff;
-  margin-bottom: 0.5rem;
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  color: var(--retro-dark);
+  margin-bottom: 0.75rem;
 }
 
 .highlight-description {
-  font-size: 0.95rem;
-  color: #b0b0b0;
-  line-height: 1.5;
+  font-size: 1rem;
+  color: #2c1463;
+  line-height: 1.6;
 }
 
 .highlight-image {
-  margin-top: 1rem;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 1.2rem;
+  border: 3px solid var(--retro-dark);
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
 }
 
 .achievement-image {
   width: 100%;
   height: auto;
-  max-height: 200px;
-  object-fit: cover;
-  transition: transform 0.3s ease;
+  display: block;
 }
 
-.highlight-card:hover .achievement-image {
-  transform: scale(1.05);
-}
-
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .about {
-    padding: 4rem 1rem;
-  }
-
-  .section-title {
-    font-size: 2.5rem;
-  }
-
-  .section-subtitle {
-    font-size: 1rem;
+    padding: 4.5rem 1.5rem;
   }
 
   .about-content {
     grid-template-columns: 1fr;
-    gap: 3rem;
+  }
+
+  .about-highlights {
+    order: -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .about {
+    padding: 4rem 1.25rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+    line-height: 1.4;
   }
 
   .about-stats {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
   }
 
@@ -215,16 +215,12 @@
     padding: 1rem;
   }
 
-  .stat-number {
-    font-size: 1.5rem;
-  }
-
   .highlight-card {
-    padding: 1rem;
+    padding: 1.2rem;
   }
 
-  .highlight-icon {
-    width: 40px;
-    height: 40px;
+  .highlight-card::after {
+    top: -14px;
+    right: -10px;
   }
 }

@@ -51,28 +51,28 @@ const Contact = () => {
       label: "Email",
       value: "vikaschaudhary.vc47@gmail.com",
       href: "mailto:vikaschaudhary.vc47@gmail.com",
-      color: "#667eea",
+      color: "#ff6ec7",
     },
     {
       icon: Github,
       label: "GitHub",
       value: "github.com/vickychaudhary",
       href: "https://github.com/vickychaudhary",
-      color: "#764ba2",
+      color: "#00ffea",
     },
     {
       icon: Linkedin,
       label: "LinkedIn",
       value: "linkedin.com/in/vikas-chaudhary-1b3478153",
       href: "https://www.linkedin.com/in/vikas-chaudhary-1b3478153/",
-      color: "#00d4ff",
+      color: "#fffb7d",
     },
     {
       icon: Twitter,
       label: "Twitter",
       value: "@vicky_vc47",
       href: "https://x.com/vicky_vc47",
-      color: "#ff6b6b",
+      color: "#742dd2",
     },
   ];
 
@@ -102,11 +102,11 @@ const Contact = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h3 className="info-title">Let's Connect</h3>
+            <h3 className="info-title">Dial Into The Signal</h3>
             <p className="info-description">
-              I'm always interested in new opportunities and exciting projects.
-              Whether you're a CTO, Founder, or Angel Investor looking for
-              technical expertise, I'd love to hear from you.
+              Building something wild? Need a full stack co-pilot who speaks
+              Web2, Web3, and everything in between? Drop a note and let’s make
+              the next internet relic together.
             </p>
 
             <div className="contact-methods">
@@ -147,7 +147,7 @@ const Contact = () => {
             >
               <div className="availability-badge">
                 <div className="status-dot"></div>
-                <span>Available for opportunities</span>
+                <span>Currently accepting rad collabs</span>
               </div>
             </motion.div>
           </motion.div>
@@ -212,7 +212,7 @@ const Contact = () => {
 
               <motion.button
                 type="submit"
-                className="submit-btn"
+                className="btn-primary submit-btn"
                 disabled={isSubmitting}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

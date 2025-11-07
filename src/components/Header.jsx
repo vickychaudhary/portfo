@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Menu, X, Code, Zap } from "lucide-react";
 import "./Header.css";
 
 const Header = () => {
@@ -22,23 +21,29 @@ const Header = () => {
     { name: "Contact", href: "#contact" },
   ];
 
+  const marqueeText =
+    "🌐 Welcome to Vicky's Cyber Space • Building bold experiences with a retro heart • "
+      .repeat(3);
+
   return (
     <motion.header
       className={`header ${scrolled ? "scrolled" : ""}`}
-      initial={{ y: -100 }}
+      initial={{ y: -120 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
+      transition={{ duration: 0.9, ease: "easeOut" }}
     >
+      <div className="header-top-glow" />
+
       <div className="header-container">
         <motion.div
           className="logo"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ rotate: [-2, 2, -2, 0] }}
+          transition={{ duration: 0.6 }}
         >
-          {/* <Code className="logo-icon" /> */}
-          <span className="logo-text gradient-text">
-            {`<build${"🔨"} what you are proud of !/>`}
+          <span className="logo-icon" role="img" aria-hidden="true">
+            💾
           </span>
+          <span className="logo-text">Vicky's Cyber Space</span>
         </motion.div>
 
         <nav className={`nav ${isMenuOpen ? "nav-open" : ""}`}>
@@ -47,11 +52,11 @@ const Header = () => {
               key={item.name}
               href={item.href}
               className="nav-link"
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ y: -4 }}
               whileTap={{ scale: 0.95 }}
-              initial={{ opacity: 0, y: -20 }}
+              initial={{ opacity: 0, y: -15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ delay: index * 0.08 }}
             >
               {item.name}
             </motion.a>
@@ -61,14 +66,24 @@ const Header = () => {
         <motion.button
           className="menu-toggle"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          whileTap={{ scale: 0.9 }}
         >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {isMenuOpen ? "Close" : "Menu"}
         </motion.button>
       </div>
 
-      {/* Mobile menu overlay */}
+      <div className="header-status-bar">
+        <div className="marquee-wrapper" aria-hidden="true">
+          <div className="marquee-track">
+            <span>{marqueeText}</span>
+          </div>
+        </div>
+        <div className="status-indicator">
+          <span className="status-light" />
+          <span className="status-text">ONLINE</span>
+        </div>
+      </div>
+
       {isMenuOpen && (
         <motion.div
           className="mobile-menu"

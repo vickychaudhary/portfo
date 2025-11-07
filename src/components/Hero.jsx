@@ -70,7 +70,10 @@ const Hero = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <span className="badge-text">🚀 Available for opportunities</span>
+            <span className="badge-light" aria-hidden="true" />
+            <span className="badge-text">
+              ✨ Guestbook is open — currently hacking on web3 & AI experiments
+            </span>
           </motion.div>
 
           <motion.h1
@@ -88,13 +91,14 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
+            <span className="role-label">Now Playing:</span>
             <span className="role-text">
               {roles.map((role, index) => (
                 <span
                   key={role}
                   className={`role ${index === currentRole ? "active" : ""}`}
                 >
-                  {role}
+                  ▸ {role}
                 </span>
               ))}
             </span>
@@ -126,13 +130,10 @@ const Hero = () => {
             <motion.a
               href="#contact"
               className="btn-primary"
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 10px 30px rgba(102, 126, 234, 0.3)",
-              }}
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Get In Touch
+              Sign My Guestbook
             </motion.a>
             <motion.a
               href="#experience"
@@ -140,7 +141,7 @@ const Hero = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              View My Work
+              Browse Projects
             </motion.a>
           </motion.div>
 
@@ -175,23 +176,32 @@ const Hero = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <div className="visual-container">
-            <div className="floating-card card-1">
-              <Code2 size={20} />
-              <span>Building</span>
+          <div className="hero-monitor">
+            <div className="monitor-header">
+              <span className="monitor-dot dot-red" />
+              <span className="monitor-dot dot-yellow" />
+              <span className="monitor-dot dot-green" />
+              <span className="monitor-title">SYSTEM DASHBOARD</span>
             </div>
-            <div className="floating-card card-2">
-              <Database size={20} />
-              <span>Blockchain</span>
+            <div className="visual-container">
+              <div className="floating-card card-1">
+                <Code2 size={18} />
+                <span>Ship Fast</span>
+              </div>
+              <div className="floating-card card-2">
+                <Database size={18} />
+                <span>On-Chain</span>
+              </div>
+              <div className="floating-card card-3">
+                <Zap size={18} />
+                <span>Real-time</span>
+              </div>
+              <div className="floating-card card-4">
+                <Cpu size={18} />
+                <span>AI / ML</span>
+              </div>
             </div>
-            <div className="floating-card card-3">
-              <Zap size={20} />
-              <span>Web3</span>
-            </div>
-            <div className="floating-card card-4">
-              <Cpu size={20} />
-              <span>AI/ML</span>
-            </div>
+            <div className="monitor-footer">Press any key to continue_</div>
           </div>
         </motion.div>
       </div>

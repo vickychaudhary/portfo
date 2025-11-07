@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap");
 
 * {
   margin: 0;
@@ -11,56 +11,98 @@ html {
 }
 
 body {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-    sans-serif;
-  background: #0a0a0a;
-  color: #ffffff;
+  font-family: "VT323", "Courier New", monospace;
+  background-color: #0a0233;
+  background-image:
+    linear-gradient(90deg, rgba(255, 50, 161, 0.18) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(0, 255, 255, 0.18) 1px, transparent 1px),
+    radial-gradient(circle at top left, rgba(255, 255, 0, 0.18), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(0, 255, 255, 0.2), transparent 60%);
+  background-size: 14px 14px, 14px 14px, 100% 100%, 100% 100%;
+  color: #fff7e6;
   overflow-x: hidden;
-  line-height: 1.6;
+  line-height: 1.7;
+  position: relative;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.22) 1px, transparent 1px);
+  background-size: 100% 3px;
+  opacity: 0.5;
+  mix-blend-mode: soft-light;
+  z-index: 0;
 }
 
 #root {
   min-height: 100vh;
+  position: relative;
+  z-index: 1;
 }
 
-/* Selection styling */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Press Start 2P", cursive;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #fffb7d;
+  text-shadow: 3px 3px 0 #1a0439, 6px 6px 0 rgba(0, 0, 0, 0.4);
+}
+
+p,
+span,
+li,
+button,
+input,
+textarea {
+  font-family: "VT323", "Courier New", monospace;
+  font-size: 1.1rem;
+}
+
+/* Selection styling - retro cyan */
 ::selection {
-  background: rgba(102, 126, 234, 0.3);
-  color: #ffffff;
+  background: #ff00ff;
+  color: #000000;
 }
 
 ::-moz-selection {
-  background: rgba(102, 126, 234, 0.3);
-  color: #ffffff;
+  background: #ff00ff;
+  color: #000000;
 }
 
-/* Focus styles */
+/* Focus styles - bright magenta */
 *:focus {
-  outline: 2px solid rgba(102, 126, 234, 0.5);
-  outline-offset: 2px;
+  outline: 3px dashed #00ffea;
+  outline-offset: 3px;
 }
 
-/* Smooth scrolling for anchor links */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Custom scrollbar */
+/* Custom scrollbar - retro style */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1a1a2e;
+  background: #23045c;
+  border: 3px ridge #ff00d4;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(45deg, #667eea, #764ba2);
-  border-radius: 4px;
+  background: linear-gradient(180deg, #00ffea, #ff00f7);
+  border: 2px solid #ffff7d;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(45deg, #764ba2, #667eea);
+  background: linear-gradient(180deg, #ffff7d, #ff6ec7);
 }
 
 /* Utility classes */
@@ -80,6 +122,37 @@ html {
 
 .text-right {
   text-align: right;
+}
+
+/* Retro link styles */
+a {
+  color: #00ffea;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 6px;
+  font-weight: 700;
+}
+
+a:visited {
+  color: #ff6ec7;
+}
+
+a:hover {
+  color: #ffff7d;
+  background: rgba(26, 4, 57, 0.6);
+  box-shadow: 4px 4px 0 #00ffea;
+}
+
+/* Marquee text */
+.marquee {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 10s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
 }
 
 /* Responsive utilities */
