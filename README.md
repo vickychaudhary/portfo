@@ -19,10 +19,12 @@ The “Send a Message” form posts to a Vercel serverless function (`/api/conta
    VITE_CONTACT_ENDPOINT=/api/contact
    RESEND_API_KEY=your-resend-api-key
    CONTACT_RECIPIENT_EMAIL=you@example.com
+   # Optional but recommended after verifying a domain with Resend
+   CONTACT_FROM_EMAIL="Portfolio Contact <you@yourdomain.com>"
    ```
 3. Restart the dev server so Vite picks up the env variables.
 
-If these variables are missing, the UI will surface an error when the form is submitted. Make sure to set the same keys in your Vercel project settings for production deployments.
+If these variables are missing, the UI will surface an error when the form is submitted. Make sure to set the same keys in your Vercel project settings for production deployments. Until you verify a custom domain with Resend, emails are sent from `onboarding@resend.dev`.
 
 ## Production Build
 

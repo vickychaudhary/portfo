@@ -2,6 +2,8 @@ import { Resend } from "resend";
 
 const resendApiKey = process.env.RESEND_API_KEY;
 const contactRecipient = process.env.CONTACT_RECIPIENT_EMAIL;
+const contactFrom =
+  process.env.CONTACT_FROM_EMAIL || "Portfolio Contact <onboarding@resend.dev>";
 
 if (!resendApiKey) {
   console.warn(
@@ -12,6 +14,12 @@ if (!resendApiKey) {
 if (!contactRecipient) {
   console.warn(
     "CONTACT_RECIPIENT_EMAIL is not set. Define it to route contact form emails."
+  );
+}
+
+if (!process.env.CONTACT_FROM_EMAIL) {
+  console.warn(
+    "CONTACT_FROM_EMAIL is not set. Falling back to onboarding@resend.dev. Verify a custom domain with Resend and set CONTACT_FROM_EMAIL to improve deliverability."
   );
 }
 
@@ -66,13 +74,14 @@ export default async function handler(req, res) {
 
   try {
     await resend.emails.send({
-      from: `Portfolio Contact <${contactRecipient}>`,
+      from: contactFrom,
       to: contactRecipient,
       subject: `[Portfolio] ${subject}`,
       reply_to: email,
       text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
     });
-
+    console.log("Message sent successfully!");
+    
     return res.status(200).json({ message: "Message sent successfully!" });
   } catch (error) {
     console.error("Contact handler error:", error);
