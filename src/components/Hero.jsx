@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import {
   Github,
@@ -12,22 +12,15 @@ import {
 } from "lucide-react";
 import "./Hero.css";
 
-const Hero = () => {
-  const [currentRole, setCurrentRole] = useState(0);
+import NowPlaying from "./NowPlaying";
 
+const Hero = () => {
   const roles = [
     "Full Stack Developer",
-    "Blockchain Engineer",
+    "Web3 Engineer",
     "Tech Lead",
     "Founding Engineer",
   ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentRole((prev) => (prev + 1) % roles.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [roles.length]);
 
   const socialLinks = [
     {
@@ -86,22 +79,11 @@ const Hero = () => {
           </motion.h1>
 
           <motion.div
-            className="hero-subtitle"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            <span className="role-label">Now Playing:</span>
-            <span className="role-text">
-              {roles.map((role, index) => (
-                <span
-                  key={role}
-                  className={`role ${index === currentRole ? "active" : ""}`}
-                >
-                  ▸ {role}
-                </span>
-              ))}
-            </span>
+            <NowPlaying items={roles} interval={3400} />
           </motion.div>
 
           <motion.p
@@ -110,15 +92,9 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.0 }}
           >
-            Innovative Full Stack Developer with 5+ years of experience,
-            specializing in
+            Passionate about building the future of applications with
             <span className="gradient-text-web3"> Node.js</span> and
-            <span className="gradient-text-web3">
-              {" "}
-              Blockchain technology
-            </span>{" "}
-            to build secure and efficient architectures for decentralized
-            applications.
+            to build secure and efficient architectures.
           </motion.p>
 
           <motion.div

@@ -23,6 +23,8 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
 
+  const contactEndpoint = import.meta.env.VITE_CONTACT_ENDPOINT;
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -32,17 +34,54 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!contactEndpoint) {
+      setSubmitStatus({
+        type: "error",
+        message: "Contact endpoint missing. Set VITE_CONTACT_ENDPOINT in your environment.",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
+    setSubmitStatus(null);
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitStatus("success");
+    try {
+      const response = await fetch(contactEndpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(
+          errorData?.message ||
+            errorData?.error ||
+            "Something went wrong while sending your message."
+        );
+      }
+
+      const data = await response.json().catch(() => ({}));
+
+      setSubmitStatus({
+        type: "success",
+        message: data?.message || "Message sent successfully!",
+      });
+
       setFormData({ name: "", email: "", subject: "", message: "" });
-
-      // Reset status after 3 seconds
-      setTimeout(() => setSubmitStatus(null), 3000);
-    }, 2000);
+    } catch (error) {
+      setSubmitStatus({
+        type: "error",
+        message: error.message || "Failed to send message. Please try again.",
+      });
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setSubmitStatus(null), 4000);
+    }
   };
 
   const contactInfo = [
@@ -230,25 +269,25 @@ const Contact = () => {
                 )}
               </motion.button>
 
-              {submitStatus === "success" && (
+              {submitStatus?.type === "success" && (
                 <motion.div
                   className="submit-status success"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                 >
                   <CheckCircle size={20} />
-                  Message sent successfully!
+                  {submitStatus.message}
                 </motion.div>
               )}
 
-              {submitStatus === "error" && (
+              {submitStatus?.type === "error" && (
                 <motion.div
                   className="submit-status error"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                 >
                   <AlertCircle size={20} />
-                  Failed to send message. Please try again.
+                  {submitStatus.message}
                 </motion.div>
               )}
             </form>

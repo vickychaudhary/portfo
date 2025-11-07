@@ -47,7 +47,7 @@ const About = () => {
             About <span className="gradient-text">Me</span>
           </h2>
           <p className="section-subtitle">
-            Passionate about building the future of decentralized applications
+            Passionate about building the future of applications
           </p>
         </motion.div>
 

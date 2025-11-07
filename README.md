@@ -1,12 +1,31 @@
-# React + Vite
+# Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio built with React, Vite, Framer Motion, and lucide-react.
 
-Currently, two official plugins are available:
+## Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+npm install
+npm run dev
+```
 
-## Expanding the ESLint configuration
+## Contact Form Configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The “Send a Message” form posts to a Vercel serverless function (`/api/contact`) backed by Resend. Configure these before deploying:
+
+1. Create an `.env.local` file at the project root (ignored by git by default) and add the sensitive keys there. When deploying to Vercel, mirror the same variables in the project’s Environment Variables settings.
+2. Add:
+   ```
+   VITE_CONTACT_ENDPOINT=/api/contact
+   RESEND_API_KEY=your-resend-api-key
+   CONTACT_RECIPIENT_EMAIL=you@example.com
+   ```
+3. Restart the dev server so Vite picks up the env variables.
+
+If these variables are missing, the UI will surface an error when the form is submitted. Make sure to set the same keys in your Vercel project settings for production deployments.
+
+## Production Build
+
+```bash
+npm run build
+```
