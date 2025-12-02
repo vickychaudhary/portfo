@@ -97,6 +97,9 @@
   font-size: 0.85rem;
   letter-spacing: 2px;
   color: var(--retro-dark);
+  text-shadow: 
+    2px 2px 0 var(--retro-yellow),
+    4px 4px 0 rgba(0, 0, 0, 0.3);
 }
 
 .skills-tags {
@@ -132,6 +135,14 @@
   letter-spacing: 2px;
   color: var(--retro-dark);
   margin-bottom: 2rem;
+  text-shadow: 
+    2px 2px 0 var(--retro-yellow),
+    4px 4px 0 rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.85);
+  padding: 0.6rem 1.2rem;
+  border: 3px solid var(--retro-dark);
+  box-shadow: 4px 4px 0 var(--retro-dark);
+  display: inline-block;
 }
 
 .achievements-grid {
@@ -168,6 +179,9 @@
   font-size: 0.8rem;
   letter-spacing: 1px;
   color: var(--retro-dark);
+  text-shadow: 
+    1px 1px 0 var(--retro-yellow),
+    2px 2px 0 rgba(0, 0, 0, 0.2);
 }
 
 .achievement-description {

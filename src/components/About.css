@@ -112,6 +112,15 @@
   font-size: 1rem;
   letter-spacing: 2px;
   color: var(--retro-dark);
+  text-shadow: 
+    2px 2px 0 var(--retro-yellow),
+    4px 4px 0 rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.85);
+  padding: 0.5rem 1rem;
+  border: 3px solid var(--retro-dark);
+  box-shadow: 4px 4px 0 var(--retro-dark);
+  display: inline-block;
+  margin-bottom: 0.5rem;
 }
 
 .highlights-grid {
@@ -162,6 +171,9 @@
   letter-spacing: 1px;
   color: var(--retro-dark);
   margin-bottom: 0.75rem;
+  text-shadow: 
+    1px 1px 0 var(--retro-yellow),
+    2px 2px 0 rgba(0, 0, 0, 0.2);
 }
 
 .highlight-description {
